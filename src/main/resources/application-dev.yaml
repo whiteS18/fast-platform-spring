@@ -1,0 +1,49 @@
+server:
+  port: 8081
+
+# 配置是否开启交互式代码生成，false直接启动项目，true启动交互式代码生成
+code:
+  generator:
+    enabled: false
+spring:
+  application:
+    name: fast-platform-spring
+  redis:
+    host: localhost
+    port: 6379
+  datasource:
+    postgresql:
+      jdbc-url: jdbc:postgresql://localhost:5432/fast_platform?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=true&allowMultiQueries=true&rewriteBatchedStatements=true&currentSchema=fp
+      username: postgres
+      password: postgrespwd
+      driver-class-name: org.postgresql.Driver
+      hikari:
+        minimum-idle: 5
+        maximum-pool-size: 20
+    mysql:
+      jdbc-url: jdbc:mysql://localhost:3306/fast_platform?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=true&allowMultiQueries=true&rewriteBatchedStatements=true
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      hikari:
+        minimum-idle: 5
+        maximum-pool-size: 20
+
+
+
+
+# 添加Sa-Token配置
+sa-token:
+  token-name: saToken
+  timeout: 2592000  # 30天，单位秒
+  is-read-head: true
+  is-read-cookie: true
+  is-read-body: false
+  is-read-uri-param: false
+  is-concurrent: true
+  is-share: true
+  max-login-count: 10
+  is-log: false
+
+ebean:
+  packages: com.application.next.bean.model
