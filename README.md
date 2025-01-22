@@ -6,5 +6,6 @@
 - 权限框架: sa-token
 - ORM框架: Ebean
 - 数据库: Postgresql
+- 数据库连接池: hikari
 - 依赖管理: Maven
 
