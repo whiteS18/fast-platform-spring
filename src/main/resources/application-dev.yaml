@@ -44,6 +44,3 @@ sa-token:
   is-share: true
   max-login-count: 10
   is-log: false
-
-ebean:
-  packages: com.application.next.bean.model
