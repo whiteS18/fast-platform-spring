@@ -45,4 +45,17 @@ public class SystemMenu extends BaseEntity {
     @Column(length = 1)
     @DbComment("是否外部链接（0-内部，1-外部）")
     private String isFrame = "0";
+
+    // 添加静态方法来创建首页菜单
+    public static SystemMenu createHomeMenu() {
+        SystemMenu homeMenu = new SystemMenu();
+        homeMenu.setMenuName("首页");
+        homeMenu.setPath("/home");
+        homeMenu.setComponent("Home");
+        homeMenu.setIcon("home");
+        homeMenu.setSortOrder(1);
+        homeMenu.setVisible("0");
+        homeMenu.setIsFrame("0");
+        return homeMenu;
+    }
 }

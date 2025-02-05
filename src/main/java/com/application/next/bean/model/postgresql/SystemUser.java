@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Entity
@@ -48,5 +49,20 @@ public class SystemUser extends BaseEntity {
 
     public enum Status {
         ENABLED, DISABLED
+    }
+
+    // 添加静态方法来创建超级管理员
+    public static SystemUser createSuperAdmin() {
+        SystemUser superAdmin = new SystemUser();
+        superAdmin.setUsername("superadmin");
+        superAdmin.setPassword("superadmin"); // 注意：实际应用中需要对密码进行加密存储
+        superAdmin.setPhone("13800138000");
+        superAdmin.setEmail("admin@example.com");
+        superAdmin.setStatus(Status.ENABLED);
+        // 假设超级管理员的角色ID为1
+        SystemRole adminRole = new SystemRole();
+        adminRole.setId(1L);
+        superAdmin.setRoles(Arrays.asList(adminRole));
+        return superAdmin;
     }
 }
