@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.4.1</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath /> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.application.next</groupId>
     <artifactId>fast-platform-spring</artifactId>
@@ -60,10 +61,10 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
+        <!--        </dependency>-->
 
         <!-- 引入数据源 -->
         <dependency>
@@ -114,7 +115,6 @@
             <version>1.39.0</version>
         </dependency>
 
-
         <!-- 添加Redis客户端依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -133,32 +133,6 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/io.ebean/ebean -->
-        <dependency>
-            <groupId>io.ebean</groupId>
-            <artifactId>ebean</artifactId>
-            <version>15.8.1</version>
-        </dependency>
-        <!-- DDL 生成器（显式指定版本并排除冲突） -->
-        <dependency>
-            <groupId>io.ebean</groupId>
-            <artifactId>ebean-ddl-generator</artifactId>
-            <version>15.8.1</version>
-            <scope>runtime</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>io.ebean</groupId>
-            <artifactId>ebean-test</artifactId>
-            <version>15.8.1</version>
-            <scope>test</scope>
-        </dependency>
-
 
         <dependency>
             <groupId>com.mysql</groupId>
@@ -166,44 +140,15 @@
         </dependency>
 
 
-
     </dependencies>
 
     <build>
         <plugins>
 
-
-            <!-- Ebean 增强插件 -->
-            <plugin>
-                <groupId>io.ebean</groupId>
-                <artifactId>ebean-maven-plugin</artifactId>
-                <version>15.8.1</version>
-                <executions>
-                    <execution>
-                        <id>ebean-enhance</id>
-                        <phase>process-classes</phase>
-                        <goals>
-                            <goal>enhance</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.10.1</version>
-                <configuration>
-                    <annotationProcessorPaths>
-                        <path> <!-- generate ebean query beans -->
-                            <groupId>io.ebean</groupId>
-                            <artifactId>querybean-generator</artifactId>
-                            <version>15.8.1</version>
-                        </path>
-                    </annotationProcessorPaths>
-                </configuration>
             </plugin>
 
             <plugin>
