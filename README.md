@@ -4,7 +4,7 @@
 - JDK版本: 21
 - 基础框架: Spring Boot 3
 - 权限框架: sa-token
-- ORM框架: Ebean
+- ORM框架: MyBatis-Flex
 - 数据库: Postgresql
 - 数据库连接池: hikari
 - 依赖管理: Maven

@@ -1,58 +1,58 @@
 package com.application.next.bean.entity;
 
-import jakarta.persistence.*;
-import lombok.Data;
+import com.mybatisflex.annotation.Column;
+import com.mybatisflex.annotation.Id;
+import com.mybatisflex.annotation.KeyType;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.Version;
 
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@MappedSuperclass
 public class BaseEntity {
 
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Id(keyType = KeyType.Auto)
+    @Column(value = "id",comment = "主键id")
     private Long id;
 
     @Version
-    @Column(name = "version", nullable = false)
+    @Column(value = "version", onInsertValue = "0",comment = "乐观锁版本号")
     private Integer version;
 
-//    @Column(name = "tenant_id", nullable = false)
-//    private String tenantId;
+    @Column(value = "tenant_id", tenantId = true)
+    private String tenantId;
 
-    @Column(name = "create_id")
+    @Column(value = "create_id")
     private Long createId;
 
-    @Column(name = "create_name")
+    @Column(value = "create_name")
     private String createName;
 
-    @Column(name = "create_time", nullable = false)
+    @Column(value = "create_time")
     private LocalDateTime createTime;
 
-    @Column(name = "update_id")
+    @Column(value = "update_id")
     private Long updateId;
 
-    @Column(name = "update_name")
+    @Column(value = "update_name")
     private String updateName;
 
-    @Column(name = "update_time")
+    @Column(value = "update_time")
     private LocalDateTime updateTime;
 
-    @Column(name = "delete_flag", nullable = false)
+    @Column(value = "delete_flag", isLogicDelete = true)
     private Integer deleteFlag;
 
-    @Column(name = "delete_id")
+    @Column(value = "delete_id")
     private Long deleteId;
 
-    @Column(name = "delete_name")
+    @Column(value = "delete_name")
     private String deleteName;
 
-    @Column(name = "delete_time")
+    @Column(value = "delete_time")
     private LocalDateTime deleteTime;
 
 
