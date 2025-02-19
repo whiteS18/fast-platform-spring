@@ -1,6 +1,6 @@
-// package com.application.next.config.datasource;
+package com.application.next.config.datasource;
 
-// import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
+import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
 public class DynamicDataSourceRouting extends AbstractRoutingDataSource {
    private static final ThreadLocal<String> CONTEXT = new ThreadLocal<>();

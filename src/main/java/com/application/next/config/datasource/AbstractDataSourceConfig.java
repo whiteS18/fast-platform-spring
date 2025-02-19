@@ -1,20 +1,20 @@
-// package com.application.next.config.datasource;
+package com.application.next.config.datasource;
 
-// import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
-// import org.springframework.beans.factory.annotation.Qualifier;
-// import org.springframework.context.annotation.Bean;
-// import org.springframework.context.annotation.Configuration;
-// import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-// import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-// import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-// import javax.sql.DataSource;
-// import java.util.HashMap;
-// import java.util.Map;
+import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.Map;
 
-// @Configuration
-// @EnableTransactionManagement
-// public abstract class AbstractDataSourceConfig {
+@Configuration
+@EnableTransactionManagement
+public abstract class AbstractDataSourceConfig {
 
    /**
     * 创建并配置JPA的EntityManagerFactoryBean。

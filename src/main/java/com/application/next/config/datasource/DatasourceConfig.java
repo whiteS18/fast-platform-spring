@@ -1,16 +1,16 @@
-// package com.application.next.config.datasource;
+package com.application.next.config.datasource;
 
-// import org.springframework.beans.factory.annotation.Qualifier;
-// import org.springframework.context.annotation.Bean;
-// import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-// import java.util.HashMap;
-// import java.util.Map;
+import java.util.HashMap;
+import java.util.Map;
 
-// import javax.sql.DataSource;
+import javax.sql.DataSource;
 
-// @Configuration
-// public class DatasourceConfig {
+@Configuration
+public class DatasourceConfig {
 
    @Bean
    public DataSource dynamicDataSource(
