@@ -1,5 +1,8 @@
 package com.application.next.config.datasource;
 
+import com.zaxxer.hikari.HikariConfig;
+
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -13,14 +16,20 @@ import javax.sql.DataSource;
 @Configuration
 public class PostgresqlDataSourceConfig {
 
+    @Primary
+    @Bean(name = "postgresqlDataSourceProperties")
+    @ConfigurationProperties(prefix = "spring.datasource.postgresql")
+    public DataSourceProperties postgresqlDataSourceProperties() {
 
+        return new DataSourceProperties();
+    }
 
     @Primary
     @Bean(name = "postgresqlDataSource")
-    @ConfigurationProperties(prefix = "spring.datasource.postgresql")
+    @ConfigurationProperties(prefix = "spring.datasource.postgresql.hikari")
     public DataSource postgresqlDataSource() {
-        return DataSourceBuilder.create()
-                .type(HikariDataSource.class)
-                .build();
+
+        return postgresqlDataSourceProperties().initializeDataSourceBuilder().type(HikariDataSource.class).build();
     }
+
 }
