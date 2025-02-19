@@ -12,18 +12,19 @@
 // @Configuration
 // public class DatasourceConfig {
 
-//     @Bean
-//     public DataSource dynamicDataSource(
-//             @Qualifier("postgresqlDataSource") DataSource postgresqlDataSource,
-//             @Qualifier("mysqlDataSource") DataSource mysqlDataSource) {
+   @Bean
+   public DataSource dynamicDataSource(
+           @Qualifier("postgresqlDataSource") DataSource postgresqlDataSource,
+           @Qualifier("mysqlDataSource") DataSource mysqlDataSource
+   ) {
 
-//         Map<Object, Object> targetDataSources = new HashMap<>();
-//         targetDataSources.put("postgresqlDataSource", postgresqlDataSource);
-//         targetDataSources.put("mysqlDataSource", mysqlDataSource);
+       Map<Object, Object> targetDataSources = new HashMap<>();
+       targetDataSources.put("postgresqlDataSource", postgresqlDataSource);
+       targetDataSources.put("mysqlDataSource", mysqlDataSource);
 
-//         DynamicDataSourceRouting routing = new DynamicDataSourceRouting();
-//         routing.setDefaultTargetDataSource(postgresqlDataSource);
-//         routing.setTargetDataSources(targetDataSources);
-//         return routing;
-//     }
-// }
+       DynamicDataSourceRouting routing = new DynamicDataSourceRouting();
+       routing.setDefaultTargetDataSource(postgresqlDataSource);
+       routing.setTargetDataSources(targetDataSources);
+       return routing;
+   }
+}
