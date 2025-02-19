@@ -8,28 +8,34 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
 import javax.sql.DataSource;
-import java.util.HashMap;
-import java.util.Map;
 
 @Configuration
 @EnableJpaRepositories(
-        basePackages = "com.fast.platform.repository.mysql",
+        basePackages = "com.application.next.repository.mysql",
         entityManagerFactoryRef = "mysqlEntityManagerFactory",
-        transactionManagerRef = "mysqlTransactionManager"
+        transactionManagerRef = "dynamicTransactionManager"
 )
-public class MysqlJpaConfig {
+public class MysqlJpaConfig extends AbstractDataSourceConfig {
+
+    @Override
+    protected String getHibernateDialect() {
+        return "org.hibernate.dialect.MySQLDialect";
+    }
+
+    @Override
+    protected String getEntityPackage() {
+        return "com.application.next.bean.mysql";
+    }
+
+    @Override
+    protected String getPersistenceUnitName() {
+        return "mysql";
+    }
 
     @Bean(name = "mysqlEntityManagerFactory")
     public LocalContainerEntityManagerFactoryBean mysqlEntityManagerFactory(
             EntityManagerFactoryBuilder builder,
-            @Qualifier("mysqlDataSource") DataSource dataSource) {
-        Map<String, String> properties = new HashMap<>();
-        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-        
-        return builder
-                .dataSource(dataSource)
-                .packages("com.fast.platform.entity.mysql")
-                .properties(properties)
-                .build();
+            @Qualifier("dynamicDataSource") DataSource dataSource) {
+        return super.entityManagerFactory(builder, dataSource);
     }
 }

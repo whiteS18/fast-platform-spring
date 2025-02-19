@@ -8,38 +8,41 @@ spring:
     redis:
       host: localhost
       port: 6379
-  datasource:
-    dynamic:
-      primary: postgresql
-      strict: false
-      datasource:
-        postgresql:
-          url: jdbc:postgresql://localhost:5432/fast_platform?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=true&allowMultiQueries=true&rewriteBatchedStatements=true&currentSchema=fp
-          username: postgres
-          password: postgrespwd
-          driver-class-name: org.postgresql.Driver
-          hikari:
-            minimum-idle: 5
-            maximum-pool-size: 20
-            idle-timeout: 300000
-            connection-timeout: 20000
-            max-lifetime: 1200000
-        mysql:
-          url: jdbc:mysql://localhost:3306/fast_platform?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=true&allowMultiQueries=true&rewriteBatchedStatements=true
-          username: root
-          password: root
-          driver-class-name: com.mysql.cj.jdbc.Driver
-          hikari:
-            minimum-idle: 5
-            maximum-pool-size: 20
-            idle-timeout: 300000
-            connection-timeout: 20000
-            max-lifetime: 1200000
   jpa:
-    show-sql: true
+    properties:
+      hibernate:
+        '[show_sql]': true
+        '[format_sql]': true
+        jdbc:
+          lob:
+            '[non_contextual_creation]': true
     hibernate:
       ddl-auto: update
 
+
+datasource:
+  postgresql:
+    url: jdbc:postgresql://localhost:5432/fast_platform?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=true&allowMultiQueries=true&rewriteBatchedStatements=true&currentSchema=fp
+    username: postgres
+    password: postgrespwd
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+      idle-timeout: 300000
+      connection-timeout: 20000
+      max-lifetime: 1200000
+  mysql:  # 备用MySQL配置
+    url: jdbc:mysql://localhost:3306/fast_platform?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=true&allowMultiQueries=true&rewriteBatchedStatements=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+      idle-timeout: 300000
+      connection-timeout: 20000
+      max-lifetime: 1200000
 
 ############## Sa-Token 配置 (文档: https://sa-token.cc) ##############
 sa-token: 
