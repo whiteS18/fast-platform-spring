@@ -40,7 +40,7 @@ public abstract class AbstractDataSourceConfig {
                 .properties(properties)
                 .persistenceUnit(getPersistenceUnitName())
                 .build();
-        emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter()); 
+        emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         return emf;
     }
 

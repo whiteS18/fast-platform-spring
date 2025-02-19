@@ -12,9 +12,10 @@ import javax.sql.DataSource;
 @Configuration
 public class MysqlDataSourceConfig {
 
+
     @Bean(name = "mysqlDataSource")
-    @ConfigurationProperties(prefix = "datasource.mysql")
+    @ConfigurationProperties(prefix = "spring.datasource.mysql")
     public DataSource mysqlDataSource() {
-        return DataSourceBuilder.create().type(HikariDataSource.class).build();
+        return  DataSourceBuilder.create().type(HikariDataSource.class).build();
     }
 }

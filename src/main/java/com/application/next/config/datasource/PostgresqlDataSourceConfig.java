@@ -13,10 +13,14 @@ import javax.sql.DataSource;
 @Configuration
 public class PostgresqlDataSourceConfig {
 
+
+
     @Primary
     @Bean(name = "postgresqlDataSource")
-    @ConfigurationProperties(prefix = "datasource.postgresql")
+    @ConfigurationProperties(prefix = "spring.datasource.postgresql")
     public DataSource postgresqlDataSource() {
-        return DataSourceBuilder.create().type(HikariDataSource.class).build();
+        return DataSourceBuilder.create()
+                .type(HikariDataSource.class)
+                .build();
     }
 }
