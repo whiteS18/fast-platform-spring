@@ -1,4 +1,4 @@
-// package com.application.next.config.datasource;
+ package com.application.next.config.datasource;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
-// import javax.sql.DataSource;
+ import javax.sql.DataSource;
 
 @Configuration
 @EnableJpaRepositories(
