@@ -6,10 +6,10 @@ spring:
     name: fast-platform-spring
   data:
     redis:
-      host: localhost
+      host: 100.108.8.51
       port: 6379
   datasource:
-      url: jdbc:postgresql://localhost:5432/fast_platform?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=true&allowMultiQueries=true&rewriteBatchedStatements=true&currentSchema=fp
+      url: jdbc:postgresql://100.108.8.51:5432/fast_platform?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=true&allowMultiQueries=true&rewriteBatchedStatements=true&currentSchema=fp
       username: postgres
       password: postgrespwd
       driver-class-name: org.postgresql.Driver
