@@ -1,4 +1,9 @@
 server:
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
   port: 8081
     
 spring:
@@ -19,6 +24,11 @@ spring:
         idle-timeout: 300000
         connection-timeout: 20000
         max-lifetime: 1200000
+        auto-commit: true
+        pool-name: FastPlatformHikariCP
+        connection-test-query: SELECT 1
+        validation-timeout: 5000
+        leak-detection-threshold: 60000
   jpa:
     properties:
       hibernate:
@@ -47,7 +57,10 @@ sa-token:
     is-log: true
 
 logging:
+  charset:
+    console: UTF-8
+    file: UTF-8
   level:
-    org.springframework.boot.autoconfigure.jdbc: DEBUG
-    com.zaxxer.hikari: DEBUG
-    org.hibernate.dialect: TRACE
+    '[org.springframework.boot.autoconfigure.jdbc]': DEBUG
+    '[com.zaxxer.hikari]': INFO
+    '[org.hibernate.dialect]': DEBUG
